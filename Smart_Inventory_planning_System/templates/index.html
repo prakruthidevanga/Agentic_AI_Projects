@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Inventory Planner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <style>
+        body {
+            margin:0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: url('{{ url_for("static", filename="inventory.jpeg") }}') center/cover no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .card {
+            background: rgba(255,255,255,0.95);
+            padding: 30px;
+            border-radius: 16px;
+            width: 400px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        h1 { text-align:center; margin-bottom: 20px; }
+        input, select { width:100%; padding:10px; margin:6px 0 14px; border-radius:6px; border:1px solid #ccc; }
+        button { width:100%; padding:12px; border:none; border-radius:6px; margin-top:10px; background:#2563eb; color:white; cursor:pointer; font-weight:bold; }
+        .result { margin-top:20px; padding:15px; border-left:5px solid #2563eb; border-radius:8px; background:#f3f4f6; }
+        .actions { margin-top:10px; display:flex; gap:10px; }
+        .accept { background:#22c55e; }
+        .modify { background:#facc15; color:black; }
+        .ignore { background:#ef4444; }
+        .footer { text-align:center; font-size:12px; margin-top:10px; color:#555; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Smart Inventory Planner</h1>
+
+        <label>Choose LLM:</label>
+        <select id="llm_mode">
+            <option value="offline ollama">Offline Ollama Mistral LLM</option>
+            <option value="online open ai">Online Open ai (GPT-3.5-Turbo) LLM</option>
+        </select>
+
+        <label>Product Name</label>
+        <input id="product" placeholder="e.g. Rice">
+
+        <button onclick="getMinStock()">Check Minimum Stock</button>
+        <div id="minStockDiv"></div>
+
+        <label>Current Stock</label>
+        <input id="stock" placeholder="10 kg / 5 packets / 3 liters">
+
+        <label>Weekly Sales</label>
+        <input id="sales" placeholder="5 kg / 2 packets / 1 liter">
+
+        <button onclick="analyze()">Generate Inventory Plan</button>
+        <div id="result"></div>
+
+        <div class="footer">
+            Agentic AI • Planner Pattern • Offline & Online LLM
+        </div>
+    </div>
+
+<script>
+function getMinStock() {
+    fetch("/get_min_stock", {
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({product: document.getElementById("product").value})
+    }).then(res=>res.json()).then(data=>{
+        document.getElementById("minStockDiv").innerHTML = `<b>Minimum Stock:</b> ${data.min_stock} ${data.unit}`;
+    });
+}
+
+let lastQty = 0;
+let lastUnit = "units";
+
+function analyze() {
+    const llm_mode = document.getElementById("llm_mode").value;
+    fetch("/analyze", {
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({
+            product: document.getElementById("product").value,
+            stock: document.getElementById("stock").value,
+            sales: document.getElementById("sales").value,
+            llm_mode: llm_mode
+        })
+    }).then(res=>res.json()).then(data=>{
+        lastQty = data.quantity;
+        lastUnit = data.unit;
+        document.getElementById("result").innerHTML = `
+            <div class="result">
+                <b>Decision:</b> ${data.decision}<br><br>
+                <b>Suggested Quantity:</b> <input id="q" value="${data.quantity} ${data.unit}"><br><br>
+                <b>Reason:</b> ${data.reason}
+                <div class="actions">
+                    <button class="accept" onclick="send('Accept')">Accept</button>
+                    <button class="modify" onclick="send('Modify')">Modify</button>
+                    <button class="ignore" onclick="send('Ignore')">Ignore</button>
+                </div>
+            </div>
+        `;
+    });
+}
+
+function send(action) {
+    const qty = document.getElementById("q").value;
+    const form = document.createElement("form");
+    form.method = "POST";
+    form.action = "/action_result";
+
+    ["action","quantity"].forEach(k=>{
+        const i = document.createElement("input");
+        i.type="hidden";
+        i.name=k;
+        i.value = (k==="quantity") ? qty : action;
+        form.appendChild(i);
+    });
+    document.body.appendChild(form);
+    form.submit();
+}
+</script>
+
+</body>
+</html>
