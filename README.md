@@ -1,635 +1,229 @@
 # 🤖 Agentic AI Projects
 
-A collection of **Agentic AI and Generative AI projects** focused on building intelligent systems that can analyze information, reason over data, generate recommendations, and support real-world decision-making.
+A collection of **Agentic AI projects** developed to explore how AI agents can understand a problem, process information, make decisions, and provide useful recommendations or actions.
 
-This repository currently includes an **AI-powered Smart Inventory Planning System** that demonstrates the integration of **Large Language Models (LLMs)** with a practical inventory management application.
-
----
-
-## 🧠 Smart Inventory Planning System
-
-### 📌 Overview
-
-The **Smart Inventory Planning System** is an AI-powered inventory management application designed to analyze inventory information and generate intelligent planning recommendations.
-
-The project combines:
-
-- Inventory data
-- Python-based application logic
-- Flask web framework
-- SQLite database
-- Large Language Models
-- AI-generated recommendations
-
-The system supports both **offline and online LLM modes**, allowing users to experiment with local and cloud-based AI models.
-
-### 🤖 Supported AI Models
-
-The application supports two LLM modes:
-
-| Mode | Technology | Purpose |
-|---|---|---|
-| 🖥️ Offline | Ollama + Mistral | Local AI processing |
-| ☁️ Online | OpenAI GPT-3.5-Turbo | Cloud-based AI processing |
+This repository contains practical AI-based projects with a focus on **automation, intelligent decision-making, and real-world applications**.
 
 ---
 
-# 🎯 Problem Statement
+## 📌 Projects
 
-Traditional inventory management often depends on spreadsheets, predefined rules, and manual analysis.
+### 🧠 Smart Inventory Planning System
 
-This can make it difficult to:
+The **Smart Inventory Planning System** is an Agentic AI-based application designed to help businesses manage inventory more efficiently.
 
-- Identify inventory problems quickly
-- Analyze stock conditions
-- Generate useful inventory recommendations
-- Reduce manual analysis
-- Support inventory planning decisions
-- Convert raw inventory information into meaningful insights
+Instead of only displaying inventory information, the system analyzes the available stock information and provides **intelligent planning and recommendations** based on the current inventory situation.
 
-The **Smart Inventory Planning System** addresses this problem by integrating AI and Large Language Models into the inventory planning workflow.
+### 🎯 Problem Statement
+
+Businesses may face problems such as:
+
+* Overstocking products
+* Products running out of stock
+* Difficulty identifying which products need attention
+* Manual inventory planning
+* Delayed decision-making
+
+The project aims to make inventory planning more intelligent by using an **AI agent that can analyze inventory information and suggest suitable actions**.
+
+### 💡 Key Features
+
+* 📦 Inventory data management
+* 📊 Inventory analysis
+* 🤖 AI-based recommendations
+* 🔍 Identification of inventory conditions
+* 📈 Smart inventory planning
+* 💬 AI-generated suggestions
+* ⚡ Automated decision support
 
 ---
 
-# 💡 Proposed Solution
+## 🔄 How the System Works
 
-The proposed system uses inventory information as input and combines traditional application logic with LLM-based processing to generate understandable inventory planning recommendations.
-
-### Basic Workflow
+The basic workflow of the system is:
 
 ```text
 Inventory Data
       ↓
 Data Processing
       ↓
-Inventory Analysis
+AI Agent
       ↓
-AI / LLM Processing
+Analyze Inventory Situation
       ↓
-Recommendation Generation
+Generate Recommendation
       ↓
-Inventory Planning Insights
-✨ Key Features
-📦 Inventory Analysis
+Inventory Planning Decision
+```
 
-The system processes inventory-related information and analyzes the available data to understand the current inventory situation.
+The AI agent uses the available inventory information to understand the current situation and generate a useful recommendation.
 
-🤖 Agentic AI Integration
+---
 
-The project demonstrates an AI-driven approach where an LLM is used to process information and generate recommendations instead of relying only on static rules.
+## 🛠️ Technology Stack
 
-🧠 Multiple LLM Modes
+The project uses technologies related to:
 
-The system supports both local and online LLM processing.
+* **Python** – Application and AI logic
+* **Flask** – Backend/API development
+* **SQLite** – Data storage
+* **Local Large Language Model (LLM)** - Ollama & GPT-3.5-Turbo
+* **Agentic AI** – Intelligent decision-making and recommendations
+* **HTML/CSS/JavaScript** – Web interface
 
-🖥️ Offline LLM
+---
 
-Uses:
+## 🧩 Agentic AI Concept
 
-Ollama
-   ↓
-Mistral LLM
-   ↓
-AI Response
-☁️ Online LLM
+The main idea of this project is to demonstrate how an AI agent can go beyond simply answering a question.
 
-Uses:
+A traditional application may follow:
 
-Application
-   ↓
-OpenAI API
-   ↓
-GPT-3.5-Turbo
-   ↓
-AI Response
-💡 AI-Powered Recommendations
+```text
+Input → Processing → Output
+```
 
-The selected LLM processes the relevant inventory information and generates planning-oriented recommendations.
+An Agentic AI application can follow:
 
-🌐 Web-Based Application
-
-The project provides a web-based interface through which users can interact with the inventory planning system.
-
-🗄️ Database Support
-
-The application uses SQLite for storing application-related data.
-
-🔄 Flexible AI Architecture
-
-The system allows experimentation with:
-
-Local LLMs
-Cloud LLMs
-Different AI processing approaches
-🏗️ System Architecture
-                    ┌─────────────────────┐
-                    │      User / Admin   │
-                    └──────────┬──────────┘
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │    Web Interface    │
-                    │    HTML / CSS / JS  │
-                    └──────────┬──────────┘
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │      Flask App      │
-                    │   Backend / Logic   │
-                    └──────────┬──────────┘
-                               │
-                    ┌──────────┴──────────┐
-                    │                     │
-                    ▼                     ▼
-           ┌─────────────────┐   ┌─────────────────┐
-           │ SQLite Database │   │    AI / LLM     │
-           └─────────────────┘   │      Layer      │
-                                 └────────┬────────┘
-                                          │
-                              ┌───────────┴───────────┐
-                              │                       │
-                              ▼                       ▼
-                    ┌─────────────────┐    ┌─────────────────┐
-                    │ Ollama + Mistral│    │ OpenAI GPT-3.5  │
-                    │   Offline LLM   │    │   Online LLM    │
-                    └─────────────────┘    └─────────────────┘
-🔄 Application Workflow
-Step 1 — Inventory Input
-
-The user provides the required inventory information to the application.
-
-Step 2 — Data Processing
-
-The Flask backend receives and processes the inventory information.
-
-Step 3 — Inventory Analysis
-
-The system analyzes the available inventory information.
-
-Step 4 — Select AI Mode
-
-The application can use either:
-
-Offline → Ollama + Mistral
-
-or:
-
-Online → OpenAI GPT-3.5-Turbo
-Step 5 — AI Processing
-
-The selected LLM processes the relevant information.
-
-Step 6 — Recommendation Generation
-
-The AI generates inventory planning insights and recommendations.
-
-Step 7 — User Review
-
-The generated information is presented to the user through the application.
-
-🛠️ Technology Stack
-Programming Language
-Python
-Backend
-Flask
-Frontend
-HTML
-CSS
-JavaScript
-Database
-SQLite
-Artificial Intelligence / Generative AI
-Large Language Models (LLMs)
-Mistral
-Ollama
-OpenAI GPT-3.5-Turbo
-Development Tools
-Git
-GitHub
-Python Development Environment
-🧩 Technologies at a Glance
-Technology	Purpose
-Python	Core application development
-Flask	Backend and web framework
-HTML	Web page structure
-CSS	User interface styling
-JavaScript	Frontend interaction
-SQLite	Database management
-Ollama	Local LLM execution
-Mistral	Offline language model
-OpenAI GPT-3.5-Turbo	Online language model
-Git	Version control
-GitHub	Repository management
-🤖 LLM Architecture
-
-The project supports two different ways of performing AI processing.
-
-🖥️ Offline Mode — Ollama + Mistral
-
-The offline configuration uses Ollama to run the Mistral language model locally.
-
-User
-  ↓
-Web Application
-  ↓
-Flask Backend
-  ↓
-Ollama
-  ↓
-Mistral
-  ↓
-AI Response
-  ↓
-Web Application
-Benefits
-Local AI processing
-Useful for experimentation
-Reduced dependency on cloud APIs
-Can work without sending prompts to a cloud LLM
-Provides an alternative to online AI services
-☁️ Online Mode — OpenAI GPT-3.5-Turbo
-
-The online configuration uses the OpenAI API with GPT-3.5-Turbo.
-
-User
-  ↓
-Web Application
-  ↓
-Flask Backend
-  ↓
-OpenAI API
-  ↓
-GPT-3.5-Turbo
-  ↓
-AI Response
-  ↓
-Web Application
-Benefits
-Cloud-based AI processing
-API-based integration
-Easy experimentation with hosted LLM capabilities
-Alternative to locally running models
-🧠 Agentic AI Concept
-
-The project demonstrates an Agentic AI-oriented workflow for a practical business problem.
-
-Instead of simply displaying inventory information, the system can use an LLM to process relevant information and generate useful planning-oriented responses.
-
-The general concept is:
-
+```text
 Input
   ↓
-Understand Information
+Understand the situation
   ↓
-Analyze Context
+Analyze available information
   ↓
-LLM Reasoning
+Make a decision
   ↓
-Generate Recommendation
-  ↓
-User Decision Support
+Generate an action/recommendation
+```
 
-The project therefore demonstrates how Generative AI can be incorporated into a business application.
+For example, when inventory information is provided, the system can analyze the situation and provide recommendations such as identifying products that may require restocking or attention.
 
-📂 Repository Structure
+---
+
+## 📂 Repository Structure
+
+```text
 Agentic_AI_Projects/
 │
 ├── Smart_Inventory_planning_System/
-│
-├── README.md
+│   ├── Application files
+│   ├── Backend
+│   ├── Frontend
+│   ├── Database
+│   └── AI/Agent logic
 │
 ├── demo_of_prototype.mp4
 │
-├── Project Documentation/
+├── Project documentation
+│   └── PDF files
 │
-└── Supporting Documents/
-Main Components
-Smart_Inventory_planning_System
+└── README.md
+```
 
-Contains the main Smart Inventory Planning System project.
+---
 
-demo_of_prototype.mp4
+## 🚀 Getting Started
 
-Contains a demonstration of the project prototype.
+### 1. Clone the Repository
 
-Documentation Files
-
-The repository also contains supporting project documentation and reports.
-
-⚙️ Installation and Setup
-1. Clone the Repository
+```bash
 git clone https://github.com/prakruthidevanga/Agentic_AI_Projects.git
+```
 
-Move into the repository:
+### 2. Open the Project
 
+```bash
 cd Agentic_AI_Projects
+```
 
-Move into the main project:
+Then open the project folder:
 
+```bash
 cd Smart_Inventory_planning_System
-🐍 2. Create a Virtual Environment
+```
 
-Creating a virtual environment is recommended.
+### 3. Install Required Dependencies
 
-Windows
-python -m venv venv
+If a `requirements.txt` file is available:
 
-Activate the environment:
-
-venv\Scripts\activate
-macOS / Linux
-python3 -m venv venv
-
-Activate:
-
-source venv/bin/activate
-📦 3. Install Dependencies
-
-If the project contains a requirements.txt file:
-
+```bash
 pip install -r requirements.txt
+```
 
-If the dependency file is not present, install the required packages according to the imports used by the project.
+### 4. Configure Ollama
 
-🖥️ 4. Configure Ollama for Offline AI
+Install and run **Ollama** with the required local language model.
 
-To use the offline LLM mode, install Ollama on your system.
+Make sure the Ollama service is running before starting the application.
 
-After installing Ollama, download the Mistral model:
+### 5. Run the Application
 
-ollama pull mistral
-
-Make sure Ollama is running before starting the application.
-
-The application can then communicate with the locally available Mistral model.
-
-☁️ 5. Configure OpenAI
-
-To use the online LLM mode, configure your OpenAI API key.
+Run the Flask application using the project's Python entry file.
 
 For example:
 
-OPENAI_API_KEY=your_api_key
-
-It is recommended to store API keys using environment variables rather than directly inside source code.
-
-Example .env
-OPENAI_API_KEY=your_api_key
-Add .env to .gitignore
-.env
-venv/
-__pycache__/
-
-Never commit API keys or other sensitive credentials to GitHub.
-
-▶️ 6. Run the Application
-
-Start the Flask application using the project's Python entry file.
-
-For example:
-
+```bash
 python app.py
+```
 
-The terminal will display the local server address.
+Then open the local URL displayed in the terminal.
 
-A typical Flask development address is:
+> The exact run command may depend on the entry-point file included in the project.
 
-http://127.0.0.1:5000
+---
 
-Open the displayed address in your browser.
+## 🎥 Project Demo
 
-The exact entry-point filename depends on the project structure.
+A prototype demonstration video is included in this repository:
 
-🧪 Example Usage
+**`demo_of_prototype.mp4`**
 
-A typical application workflow is:
+It demonstrates the working concept and flow of the Agentic AI inventory planning system.
 
-1. Open the web application
-          ↓
-2. Provide inventory information
-          ↓
-3. Select an AI processing mode
-          ↓
-4. Process inventory information
-          ↓
-5. AI analyzes the information
-          ↓
-6. Generate recommendations
-          ↓
-7. Review inventory planning insights
-📊 AI Processing Flow
-Inventory Information
-        ↓
-Data Processing
-        ↓
-Context Preparation
-        ↓
-Selected LLM
-        ↓
-AI Processing
-        ↓
-Generated Response
-        ↓
-Inventory Recommendation
+---
 
-The AI layer acts as an intelligent processing component that converts inventory-related information into understandable recommendations.
+## 📚 Learning Objectives
 
-💼 Business Use Case
+This project helped explore:
 
-Inventory management is an important part of retail, e-commerce, manufacturing, warehousing, and supply-chain operations.
+* Agentic AI concepts
+* Large Language Models
+* Local LLM integration
+* AI-powered decision support
+* Inventory management
+* Backend development with Flask
+* Database integration
+* AI application development
+* Connecting AI with real-world business problems
 
-An AI-powered inventory planning system can assist users by:
+---
 
-Understanding inventory information
-Identifying important inventory conditions
-Generating planning-oriented recommendations
-Reducing repetitive manual analysis
-Supporting operational decision-making
-📈 Potential Applications
+## 🔮 Future Enhancements
 
-The project concept can be extended to:
+Possible future improvements include:
 
-🛒 Retail stores
-🛍️ E-commerce platforms
-🏭 Manufacturing companies
-📦 Warehouses
-🚚 Supply-chain operations
-🏪 Grocery stores
-🏢 Distribution centers
-🔐 Security Considerations
+* Real-time inventory data integration
+* Demand forecasting using Machine Learning
+* Automatic reorder recommendations
+* Supplier and purchase-order integration
+* Multi-agent inventory planning
+* Dashboard with advanced analytics
+* Cloud deployment
+* Integration with business databases
+* Improved agent memory and tool usage
 
-When using online LLM APIs:
+---
 
-Never expose API keys in source code
-Use environment variables
-Do not commit .env files
-Do not share API credentials
-Add sensitive files to .gitignore
+## 👩‍💻 Author
 
-Example:
+**Prakruthi BR**
 
-.env
-*.key
-*.secret
-venv/
-__pycache__/
-🧪 Testing and Experimentation
-
-The project can be tested using both supported LLM modes.
-
-Offline Testing
-Application
-    ↓
-Ollama
-    ↓
-Mistral
-    ↓
-Generated Response
-Online Testing
-Application
-    ↓
-OpenAI API
-    ↓
-GPT-3.5-Turbo
-    ↓
-Generated Response
-
-Testing both modes allows comparison of local and cloud-based LLM integration within the same application concept.
-
-📚 Learning Outcomes
-
-This project provides practical experience in:
-
-Python
-
-Using Python to develop an AI-powered application.
-
-Flask
-
-Building a backend web application and connecting application components.
-
-SQLite
-
-Managing application data using a lightweight relational database.
-
-Generative AI
-
-Understanding how Large Language Models can be integrated into real-world applications.
-
-LLM Integration
-
-Connecting applications with both local and cloud-based language models.
-
-Ollama
-
-Understanding how local LLMs can be executed and accessed through an application.
-
-Mistral
-
-Working with an open-source language model for local AI processing.
-
-OpenAI API
-
-Understanding API-based integration with a hosted language model.
-
-AI Application Development
-
-Combining web development, databases, and AI into one practical system.
-
-🔮 Future Enhancements
-
-The system can be further improved with:
-
-📊 Machine Learning-based demand forecasting
-📈 Sales trend prediction
-📦 Automated reorder recommendations
-🔔 Low-stock notifications
-📉 Inventory trend dashboards
-🧠 Advanced AI agents
-🤖 Additional open-source LLMs
-☁️ Additional cloud LLM providers
-📊 Interactive analytics dashboards
-🔐 User authentication
-👥 Role-based access control
-📱 Mobile-responsive interface
-📤 Inventory report export
-🗄️ Production database integration
-🔄 Automated inventory monitoring
-🚀 Future AI Architecture
-
-A possible future architecture is:
-
-                       User
-                         │
-                         ▼
-                 Web Application
-                         │
-                         ▼
-                Inventory Database
-                         │
-                         ▼
-                 Data Processing
-                         │
-                         ▼
-                  AI Agent / Planner
-                         │
-              ┌──────────┴──────────┐
-              │                     │
-              ▼                     ▼
-        Local LLM               Cloud LLM
-      Ollama + Mistral       OpenAI / Other LLM
-              │                     │
-              └──────────┬──────────┘
-                         ▼
-                 AI Recommendation
-                         │
-                         ▼
-                    Dashboard
-
-🎥 Prototype Demonstration
-
-A prototype demonstration video is included in the repository.
-
-demo_of_prototype.mp4
-
-The video demonstrates the working concept and interaction flow of the prototype.
-
-🏆 Key Takeaway
-
-The Smart Inventory Planning System demonstrates how Agentic AI and Large Language Models can be integrated with a web application to support inventory analysis and planning.
-
-The project combines:
-
-Business Problem
-       +
-Inventory Data
-       +
-Python
-       +
-Flask
-       +
-SQLite
-       +
-Large Language Models
-       +
-AI Recommendations
-       ↓
-Smart Inventory Planning System
-
-👩‍💻 Author
-Prakruthi BR
-
-BCA — Artificial Intelligence & Machine Learning
-
-Areas of Interest
-Artificial Intelligence
-Machine Learning
-Generative AI
-Data Analytics
-Software Development
-AI-Powered Applications
+BCA – Artificial Intelligence & Machine Learning
 
 
-⭐ Support
+---
 
-If you find this project useful or interesting, consider giving the repository a ⭐ on GitHub.
+## ⭐ Repository
+
+If you find this project useful or interesting, consider giving the repository a ⭐.
