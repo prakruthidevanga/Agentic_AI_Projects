@@ -1,229 +1,195 @@
-# 🤖 Agentic AI Projects
+# 🤖 Agentic AI Projects — Smart Inventory Planning System
 
-A collection of **Agentic AI projects** developed to explore how AI agents can understand a problem, process information, make decisions, and provide useful recommendations or actions.
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:4C1D95,50:6D28D9,100:A855F7&height=220&section=header&text=Agentic%20AI%20Projects&fontSize=48&fontColor=ffffff&animation=fadeIn&desc=Autonomous%20Multi-Agent%20Planning%20with%20Local%20LLM%20Reasoning&descSize=15&descAlignY=68" width="100%" alt="Agentic AI Deep Purple Waving Banner"/>
+</p>
 
-This repository contains practical AI-based projects with a focus on **automation, intelligent decision-making, and real-world applications**.
+<p align="center">
+  An autonomous multi-agent inventory planning and replenishment architecture utilizing local Large Language Models (LLMs via Ollama) and a Flask/SQLite backend to reason over retail consumption velocity, predict stockouts, and formulate automated purchase recommendations.
+</p>
 
----
+<p align="center">
+  <a href="https://github.com/prakruthidevanga/Agentic_AI_Projects">
+    <img src="https://img.shields.io/badge/💻_Codebase-GitHub_Repository-1F2937?style=for-the-badge&logo=github&logoColor=white" alt="Source Code"/>
+  </a>
+</p>
 
-## 📌 Projects
-
-### 🧠 Smart Inventory Planning System
-
-The **Smart Inventory Planning System** is an Agentic AI-based application designed to help businesses manage inventory more efficiently.
-
-Instead of only displaying inventory information, the system analyzes the available stock information and provides **intelligent planning and recommendations** based on the current inventory situation.
-
-### 🎯 Problem Statement
-
-Businesses may face problems such as:
-
-* Overstocking products
-* Products running out of stock
-* Difficulty identifying which products need attention
-* Manual inventory planning
-* Delayed decision-making
-
-The project aims to make inventory planning more intelligent by using an **AI agent that can analyze inventory information and suggest suitable actions**.
-
-### 💡 Key Features
-
-* 📦 Inventory data management
-* 📊 Inventory analysis
-* 🤖 AI-based recommendations
-* 🔍 Identification of inventory conditions
-* 📈 Smart inventory planning
-* 💬 AI-generated suggestions
-* ⚡ Automated decision support
+<p align="center">
+  <img src="https://img.shields.io/badge/Architecture-Multi--Agent%20System-4C1D95?style=flat-square" alt="Multi-Agent"/>
+  <img src="https://img.shields.io/badge/Inference-Local%20LLM%20(Ollama)-6D28D9?style=flat-square" alt="Local LLM"/>
+  <img src="https://img.shields.io/badge/Backend-Python%20Flask-8B5CF6?style=flat-square" alt="Flask Backend"/>
+  <img src="https://img.shields.io/badge/Database-SQLite%20State%20Store-A855F7?style=flat-square" alt="SQLite"/>
+</p>
 
 ---
 
-## 🔄 How the System Works
+## 📌 Table of Contents
 
-The basic workflow of the system is:
+- [📖 Project Overview](#-project-overview)
+- [🎯 Objectives](#-objectives)
+- [✨ Key Features](#-key-features)
+- [🤖 Multi-Agent Architecture](#-multi-agent-architecture)
+- [🏗️ System Workflow](#️-system-workflow)
+- [🛠️ Technology Stack](#️-technology-stack)
+- [📁 Repository Structure](#-repository-structure)
+- [⚙️ Installation and Setup](#️-installation-and-setup)
+- [🔮 Future Enhancements](#-future-enhancements)
+- [🤝 Contributing](#-contributing)
+- [👩‍💻 Author & Accreditations](#-author--accreditations)
 
-```text
-Inventory Data
-      ↓
-Data Processing
-      ↓
-AI Agent
-      ↓
-Analyze Inventory Situation
-      ↓
-Generate Recommendation
-      ↓
-Inventory Planning Decision
+---
+
+## 📖 Project Overview
+
+Smallholder retail operations frequently struggle with stockouts, overstocking, and unpredictable supplier lead times. Traditional inventory software relies on static reorder thresholds that fail to adapt to seasonality, demand spikes, or dynamic supplier constraints.
+
+**Agentic AI Projects** introduces an autonomous multi-agent planning framework for intelligent inventory replenishment. By deploying collaborative specialized agents (Monitor, Planner, and Executor) backed by local LLM reasoning through **Ollama**, the system continuously monitors stock levels, synthesizes natural language restocking proposals, and generates purchase orders without relying on expensive proprietary cloud APIs.
+
+🤖 **Core Mission:** Bring accessible, autonomous AI decision-making into local retail operations using open-source, local agentic workflows.
+
+---
+
+## 🎯 Objectives
+
+- 🔍 **Real-Time Stock Velocity Tracking:** Continuously audit item depletion rates and lead times against safety buffer thresholds.
+- 🧠 **Autonomous LLM Deliberation:** Employ local LLMs to reason over conflicting constraints (storage limits, bulk discounts, cash flow) and produce human-understandable rationale.
+- 🔄 **Multi-Agent Collaboration:** Segment responsibilities across specialized agents rather than relying on a single monolithic prompt.
+- 💾 **State Persistence:** Maintain structured historical state and order records in SQLite.
+- 🔒 **Privacy-Preserving Local Inference:** Keep all proprietary commercial sales data 100% on-premise without cloud data leakage.
+
+---
+
+## ✨ Key Features
+
+### 🕵️ 1. Inventory Monitor Agent
+Regularly polls warehouse inventory databases, identifies stock approaching minimum safety margins, and flags critical items into the deliberation queue.
+
+### 📋 2. Replenishment Planner Agent
+Integrates with local LLM models (e.g., Llama 3 / Mistral via Ollama) to evaluate consumption velocity, supplier delivery timetables, and economic order quantities ($EOQ$).
+
+### ⚡ 3. Executor Agent
+Translates agreed planning recommendations into structured, persistent purchase requisitions stored in the SQLite database and exports printable purchase orders.
+
+### 🌐 4. Interactive Web Interface
+A clean Flask dashboard providing shopkeepers with clear visibility into current stock, active agent decisions, and one-click order confirmations.
+
+---
+
+## 🤖 Multi-Agent Architecture
+
+```mermaid
+flowchart TD
+    A["Raw Inventory & Sales Data (SQLite)"] --> B["Inventory Monitor Agent"]
+    B -->|"Flagged Low Stock Alert"| C["Replenishment Planner Agent"]
+    C <-->|"Prompt & State Context"| D["Local LLM Reasoning Engine (Ollama)"]
+    D -->|"Restocking Strategy & Rationale"| C
+    C -->|"Structured Plan"| E["Executor Agent"]
+    E -->|"Log Purchase Order"| A
+    E -->|"Render Proposal"| F["Shopkeeper Web Dashboard"]
 ```
-
-The AI agent uses the available inventory information to understand the current situation and generate a useful recommendation.
 
 ---
 
 ## 🛠️ Technology Stack
 
-The project uses technologies related to:
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=python,flask,sqlite,git,github,vscode&theme=dark" alt="Agentic Tech Stack"/>
+</p>
 
-* **Python** – Application and AI logic
-* **Flask** – Backend/API development
-* **SQLite** – Data storage
-* **Local Large Language Model (LLM)** - Ollama & GPT-3.5-Turbo
-* **Agentic AI** – Intelligent decision-making and recommendations
-* **HTML/CSS/JavaScript** – Web interface
-
----
-
-## 🧩 Agentic AI Concept
-
-The main idea of this project is to demonstrate how an AI agent can go beyond simply answering a question.
-
-A traditional application may follow:
-
-```text
-Input → Processing → Output
-```
-
-An Agentic AI application can follow:
-
-```text
-Input
-  ↓
-Understand the situation
-  ↓
-Analyze available information
-  ↓
-Make a decision
-  ↓
-Generate an action/recommendation
-```
-
-For example, when inventory information is provided, the system can analyze the situation and provide recommendations such as identifying products that may require restocking or attention.
+| Component | Technology | Implementation Role |
+| :--- | :--- | :--- |
+| **Agent Logic & Orchestration** | Python 3.10+ | Multi-agent coordination, prompt templates, and decision flows |
+| **Local LLM Inference** | Ollama | On-premise language model execution (Mistral / Llama 3) |
+| **Backend API** | Flask | RESTful service endpoints connecting agent workers to the frontend |
+| **Storage & Persistence** | SQLite | Tabular store for inventory counts, products, and order histories |
+| **Frontend UI** | HTML5, CSS3, JS | Responsive monitoring interface and human-in-the-loop validation |
 
 ---
 
-## 📂 Repository Structure
+## 📁 Repository Structure
 
 ```text
 Agentic_AI_Projects/
-│
 ├── Smart_Inventory_planning_System/
-│   ├── Application files
-│   ├── Backend
-│   ├── Frontend
-│   ├── Database
-│   └── AI/Agent logic
-│
-├── demo_of_prototype.mp4
-│
-├── Project documentation
-│   └── PDF files
-│
-└── README.md
+│   ├── agents/                   # Specialized agent implementation classes
+│   │   ├── monitor_agent.py      # Inventory depletion tracking
+│   │   ├── planner_agent.py      # LLM reasoning and strategy formulation
+│   │   └── executor_agent.py     # Order logging and execution
+│   ├── database/                 # SQLite schema definitions and migrations
+│   ├── app.py                    # Flask application and server routes
+│   └── requirements.txt          # Python library specifications
+├── README.md                     # Comprehensive project documentation
+└── screenshots/                  # System architecture and UI previews
 ```
 
 ---
 
-## 🚀 Getting Started
+## ⚙️ Installation and Setup
 
-### 1. Clone the Repository
+### Prerequisites
+- Python 3.10+
+- [Ollama](https://ollama.ai/) installed and running locally
+- Git
 
+### Step 1: Clone Repository
 ```bash
 git clone https://github.com/prakruthidevanga/Agentic_AI_Projects.git
+cd Agentic_AI_Projects/Smart_Inventory_planning_System
 ```
 
-### 2. Open the Project
-
+### Step 2: Set Up Python Environment
 ```bash
-cd Agentic_AI_Projects
-```
-
-Then open the project folder:
-
-```bash
-cd Smart_Inventory_planning_System
-```
-
-### 3. Install Required Dependencies
-
-If a `requirements.txt` file is available:
-
-```bash
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
 
-### 4. Configure Ollama
+### Step 3: Pull Local LLM via Ollama
+Ensure Ollama is running in background:
+```bash
+ollama run mistral
+```
 
-Install and run **Ollama** with the required local language model.
-
-Make sure the Ollama service is running before starting the application.
-
-### 5. Run the Application
-
-Run the Flask application using the project's Python entry file.
-
-For example:
-
+### Step 4: Start the Agentic Application
 ```bash
 python app.py
 ```
-
-Then open the local URL displayed in the terminal.
-
-> The exact run command may depend on the entry-point file included in the project.
-
----
-
-## 🎥 Project Demo
-
-A prototype demonstration video is included in this repository:
-
-**`demo_of_prototype.mp4`**
-
-It demonstrates the working concept and flow of the Agentic AI inventory planning system.
-
----
-
-## 📚 Learning Objectives
-
-This project helped explore:
-
-* Agentic AI concepts
-* Large Language Models
-* Local LLM integration
-* AI-powered decision support
-* Inventory management
-* Backend development with Flask
-* Database integration
-* AI application development
-* Connecting AI with real-world business problems
+*Open `http://localhost:5000` to interact with the multi-agent planning dashboard.*
 
 ---
 
 ## 🔮 Future Enhancements
 
-Possible future improvements include:
-
-* Real-time inventory data integration
-* Demand forecasting using Machine Learning
-* Automatic reorder recommendations
-* Supplier and purchase-order integration
-* Multi-agent inventory planning
-* Dashboard with advanced analytics
-* Cloud deployment
-* Integration with business databases
-* Improved agent memory and tool usage
+- 📊 **Dynamic Supplier Pricing:** Integrate real-time API feeds to dynamically factor in fluctuating wholesale market prices.
+- 🤝 **Multi-Modal Receipt Scanning:** Add OCR capability to scan paper delivery invoices directly into the database.
+- 🔔 **WhatsApp / SMS Notifications:** Alert store owners via automated messaging when critical items reach threshold.
 
 ---
 
-## 👩‍💻 Author
+## 🤝 Contributing
 
-**Prakruthi BR**
-
-BCA – Artificial Intelligence & Machine Learning
-
+Contributions are welcomed! Feel free to fork the repository, open an issue, or submit a pull request with new agent patterns.
 
 ---
 
-## ⭐ Repository
+## 👩‍💻 Author & Accreditations
 
-If you find this project useful or interesting, consider giving the repository a ⭐.
+**Prakruthi B R**  
+*BCA Student specializing in Artificial Intelligence & Machine Learning*  
+*Alliance University, Bengaluru (CGPA: 9.60)*  
+*GeeksforGeeks Campus Mantri (2026)*
+
+- 💻 **GitHub:** [@prakruthidevanga](https://github.com/prakruthidevanga)
+- 🔗 **LinkedIn:** [Prakruthi BR](https://linkedin.com/in/prakruthi-br)
+- 🌐 **Portfolio:** [prakruthidevanga.github.io](https://prakruthidevanga.github.io/)
+- 📬 **Email:** [prakruthibr2006@gmail.com](mailto:prakruthibr2006@gmail.com)
+
+---
+
+<p align="center">
+  <b>🤖 Pioneering practical autonomous decision systems for everyday enterprise problems.</b>
+</p>
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:4C1D95,50:6D28D9,100:A855F7&height=110&section=footer" width="100%" alt="Agentic AI Footer"/>
+</p>
